@@ -37,6 +37,9 @@ def getLinks(pageUrl):
     print('weatherReport3 = ',weatherReport3)
     
 
+    weatherString = weatherReport1+'\n'+weatherReport2+'\n'+weatherReport1+'\n'
+    #print('weatherString = ',weatherString)
+    
     if(predict1[1] == predict2[1] and curHour<23):
         wea_today = ""
         
@@ -75,6 +78,8 @@ def getLinks(pageUrl):
                 wea_tomorrow = "明天"+tempS_t+"降雨機率不高, 還算是不錯的天氣呢"
             print(wea_tomorrow)
 
+    return weatherString
+
     '''
     print('predict1 = ',predict1)
     print('predict2 = ',predict2)
@@ -97,6 +102,7 @@ def getCurHour():
     return dt.datetime.now().hour
     
 if __name__ == "__main__":
-    getLinks(linkUrl)
+    weatherString = getLinks(linkUrl)
+    print('weatherString = ',weatherString)
     os.system("pause")
     
