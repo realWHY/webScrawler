@@ -37,15 +37,33 @@ s.quit()
 from catchPTTtitle_raw import getPTTInfo
 import weatherscrawler as ws
 import win32com.client as win32
+import random
 
 to_list = ["Hungyu.Wei@abilitycorp.com.tw"]
 city = 'New_Taipei_City'
 weatherLinkUrl = 'http://www.cwb.gov.tw/V7/forecast/taiwan/'+ city +'.htm'
-pttLinkUrl = 'https://www.ptt.cc/bbs/Beauty/index.html'
-
+##pttLinkUrl = 'https://www.ptt.cc/bbs/Beauty/index.html'
+##pttLinkUrl ="https://www.ptt.cc/bbs/Tech_Job/index2593.html"
 whichWeather = '讓我們來關心天氣 ^.< \n\n'
-whichPtt = 'Beauty版 最新最Hot !!!! \n'
 
+#define ptt key
+ptt_jobKey = "https://www.ptt.cc/bbs/Tech_Job/index2593.html"
+ptt_beautyKey = "https://www.ptt.cc/bbs/Beauty/index.html"
+
+#ptt list
+ptt_list = [ptt_jobKey, ptt_beautyKey]
+
+ptt_random_num = random.randint(0,len(ptt_list)-1)
+print(ptt_random_num)
+ptt_key = ptt_list[ptt_random_num]
+#ptt url
+ptt_url = {ptt_jobKey: 'Job版 最新最Cool !!!! \n',
+           ptt_beautyKey : 'Beauty版 最新最Hot !!!! \n'}
+
+pttLinkUrl = ptt_key
+whichPtt = ptt_url[ptt_key]
+
+# weather report
 weatherContent = ws.getLinks(weatherLinkUrl)
 pttContent = whichPtt + getPTTInfo(pttLinkUrl)
 
@@ -56,7 +74,7 @@ for maillist in to_list:
     mail = outlook.CreateItem(0)
     print(maillist)
     mail.To = maillist
-    mail.Subject = '訂便當 + 天氣預報 + special'
+    mail.Subject = '訂便當 + 天氣預報 +'+ whichPtt
     mail.Body = ('趕快訂便當唷'+'\n'+ sepLine + whichWeather + weatherContent
                 + '\n' + sepLine + pttContent)
     mail.Send()

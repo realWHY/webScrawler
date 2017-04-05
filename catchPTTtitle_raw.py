@@ -10,7 +10,7 @@ def getPTTInfo(url):
     soup = BeautifulSoup(pageSource.text.encode('utf-8'),"lxml")
     dict_collect = {}
     #print("dict_collect",dict_collect)
-    num_page = 2
+    num_page = 3
     while(num_page > 0):
         childs = soup.select('.r-list-container')[0].children
         for child in childs:
@@ -51,7 +51,7 @@ def getPTTInfo(url):
     strContent = ''
     for k, v in dict_order.items():
         if v==100:
-            v = '爆'
+            v = '  爆炸Bang!!'
         strContent = strContent+k+'\t'+'推文數'+str(v)+'\n'
     return strContent
 
