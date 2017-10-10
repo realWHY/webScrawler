@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import collections
 from operator import itemgetter
 
-url = 'https://www.ptt.cc/bbs/Beauty/index.html'
+##url = 'https://www.ptt.cc/bbs/Beauty/index.html'
 #url = 'https://www.ptt.cc/bbs/Tech_Job/index.html'
 def getPTTInfo(url):
     pageSource=requests.get(url)

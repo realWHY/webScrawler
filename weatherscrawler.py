@@ -18,26 +18,26 @@ def getLinks(pageUrl):
     predict3 = info[3].get_text().strip().split()
 
     
-    print('predict1 = ',predict1)
-    print('predict2 = ',predict2)
-    print('predict3 = ',predict3)
+##    print('predict1 = ',predict1)
+##    print('predict2 = ',predict2)
+##    print('predict3 = ',predict3)
     
     
     
     weatherReport1 = (predict1[0]+" => "+predict1[7]+",降雨機率為"+predict1[8]+
                     predict1[9])
-    print('weatherReport1 = ',weatherReport1)
+##    print('weatherReport1 = ',weatherReport1)
 
     weatherReport2 = (predict2[0]+" => "+predict2[7]+",降雨機率為"+predict2[8]+
                     predict2[9])
-    print('weatherReport2 = ',weatherReport2)
+##    print('weatherReport2 = ',weatherReport2)
 
     weatherReport3 = (predict3[0]+" => "+predict3[7]+",降雨機率為"+predict3[8]+
                     predict3[9])
-    print('weatherReport3 = ',weatherReport3)
+##    print('weatherReport3 = ',weatherReport3)
     
 
-    weatherString = weatherReport1+'\n'+weatherReport2+'\n'+weatherReport1+'\n'
+    weatherString = weatherReport1+'\n'+weatherReport2+'\n'+weatherReport3+'\n'
     #print('weatherString = ',weatherString)
     
     if(predict1[1] == predict2[1] and curHour<23):
@@ -52,7 +52,7 @@ def getLinks(pageUrl):
             wea_today = "今天"+tempS+"晚上有很高降雨機率, 請記得攜帶雨具"
         else:
             wea_today = "今天"+tempS+"有較小降雨機率, 還算是不錯的天氣"
-        print(wea_today)
+##        print(wea_today)
     else:
         wea_today = ""
         wea_tomorrow = ""
@@ -64,7 +64,7 @@ def getLinks(pageUrl):
                 wea_today = "今天晚上"+tempS+"降雨機率非常低, 好好享受夜晚吧"
             else:
                 wea_today = "今天晚上"+tempS+"有較小降雨機率, 還算是不錯的天氣"
-            print(wea_today)   
+##            print(wea_today)   
         
         if(curHour>20):
             tempS_t = predict2[7]+","
@@ -76,7 +76,7 @@ def getLinks(pageUrl):
                 wea_tomorrow = "明天"+tempS_t+"晚上有很高降雨機率, 請記得攜帶雨具"
             else:
                 wea_tomorrow = "明天"+tempS_t+"降雨機率不高, 還算是不錯的天氣呢"
-            print(wea_tomorrow)
+##            print(wea_tomorrow)
 
     return weatherString
 
@@ -103,6 +103,6 @@ def getCurHour():
     
 if __name__ == "__main__":
     weatherString = getLinks(linkUrl)
-    print('weatherString = ',weatherString)
+##    print('weatherString = ',weatherString)
     os.system("pause")
     
